@@ -1,21 +1,20 @@
 package ru.netology.manager;
 
-import ru.netology.domain.Movie;
-
 public class MovieManager {
-    private Movie[] movies = new Movie[0];
+    private String[] movies = new String[0];
+    private int limit;
 
-    public MovieManager(Movie[] movies) {
-        this.movies = movies;
+    public MovieManager(int limit) {
+        this.limit = limit;
     }
 
     public MovieManager() {
 
     }
 
-    public void add(Movie movie) {
+    public void add(String movie) {
 
-        Movie[] tmp = new Movie[movies.length + 1];
+        String[] tmp = new String[movies.length + 1];
         for (int i = 0; i < movies.length; i++) {
             tmp[i] = movies[i];
         }
@@ -24,25 +23,23 @@ public class MovieManager {
         movies = tmp;
     }
 
-    public Movie[] findAll() {
-        Movie[] movie  = new Movie[movies.length];
-
-        for (int i = 0; i < movies.length; i++) {
-            System.out.println(movies[i]);
-
-        }
+    public String[] findAll() {
         return movies;
     }
 
-    public Movie[] findLast() {
-        Movie[] result = new Movie[movies.length];
-
+    public String[] findLast() {
+        int resultLenght;
+        if (movies.length < limit) {
+            resultLenght = movies.length;
+        } else {
+            resultLenght = limit;
+        }
+        String[] result = new String[resultLenght];
         for (int i = 0; i < result.length; i++) {
-            int index = movies.length - i -1;
+            int index = movies.length - i - 1;
             result[i] = movies[index];
         }
-
-        return movies;
+        return result;
     }
 
 }
