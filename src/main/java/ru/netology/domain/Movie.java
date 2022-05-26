@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Movie {
-    private String name;
-    }
+   private String name;
+}
